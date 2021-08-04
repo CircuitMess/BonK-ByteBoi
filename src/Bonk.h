@@ -5,8 +5,8 @@
 #include <CircuitOS.h>
 #include <Input/Input.h>
 #include <Loop/LoopManager.h>
-#include <gpio.h>
-#include <avr/pgmspace.h>
+
+
 #include <Support/Context.h>
 #include "../Nibble.hpp"
 #include <UI/Image.h>
