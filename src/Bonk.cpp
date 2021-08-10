@@ -5,7 +5,7 @@
 #include "PauseState.h"
 #include "State.hpp"
 
-Bonk::Bonk::Bonk(Display& display) : Context(display), display(&display), canvas(display.getBaseSprite()){
+Bonk::Bonk::Bonk(Display& display) : Context(display), display(&display), canvas(screen.getSprite()){
 	randomSeed(micros()*millis());
 	state = new TitleState(canvas);
 }
@@ -18,7 +18,7 @@ void Bonk::Bonk::loop(uint _time)
 {
 	state->update(_time, *this);
 	draw();
-	display->commit();
+	screen.commit();
 }
 void Bonk::Bonk::start()
 {

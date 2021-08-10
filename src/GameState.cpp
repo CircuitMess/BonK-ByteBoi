@@ -18,20 +18,20 @@ Bonk::GameState::GameState(Sprite* sprite) : State(sprite)
 	playerWidth = 6;
 	playerX = 5;
 	playerY = (sprite->height() - playerHeight) / 2;
-	playerSpeedY = 1.0;
+	playerSpeedY = 2.0;
 	//oponent variables
 	opponentScore = 0;
 	opponentHeight = 32;
 	opponentWidth = 6;
 	opponentX = sprite->width() - opponentWidth - 5;
 	opponentY = (sprite->height() - opponentHeight) / 2;
-	opponentSpeedY = 1.0;
+	opponentSpeedY = 2.0;
 	//ball variables
 	ballSize = 12;
 	ballX = sprite->width() - ballSize - opponentWidth - 1;
 	ballY = (sprite->height() - ballSize) / 2;
-	ballSpeedX = 1.75;
-	ballSpeedY = 1.75;
+	ballSpeedX = 4.0;
+	ballSpeedY = 4.0;
 
 	winCondition = 0;
 	deathTimer = 0;
@@ -58,25 +58,23 @@ void Bonk::GameState::stop()
 void Bonk::GameState::draw()
 {
 	display->setTextSize(5);
-	display->setTextFont(1);
+	display->setFont(&fonts::Font0);
 	display->setTextColor(TFT_WHITE);
 	display->clear(TFT_BLACK);
 	
 	if(winCondition)
 	{
 		display->clear(TFT_BLACK);
-		display->setTextFont(2);
+		display->setFont(&fonts::Font2);
 		display->setTextColor(TFT_WHITE);
 		display->setTextSize(2);
-		display->setCursor(60, 30);
 		if(playerScore > 9){
-			display->printCenter("PLAYER 1");
+			display->drawString("PLAYER 1", display->width()/2, 30);
 		}
 		else if(opponentScore > 9){
-			display->printCenter("PLAYER 2");
+			display->drawString("PLAYER 2", display->width()/2, 30);
 		}
-		display->setCursor(60,60);
-		display->printCenter("WINS");
+		display->drawString("WINS", display->width()/2,60);
 		if(deathTimer >= 2000000)
 		{
 			game->newGame();
@@ -86,8 +84,7 @@ void Bonk::GameState::draw()
 
 	//draw the score
 	display->setTextSize(3);
-	display->setCursor(15, 32);
-	display->printCenter(String(String(playerScore) + "    " + String(opponentScore)));
+	display->drawString(String(String(playerScore) + "     " + String(opponentScore)), display->width() / 2, 32);
 	//draw the ball
 	display->fillRect(ballX, ballY, ballSize, ballSize, TFT_WHITE);
 	//draw the player

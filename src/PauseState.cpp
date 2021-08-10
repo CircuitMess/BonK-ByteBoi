@@ -26,17 +26,16 @@ void Bonk::PauseState::stop()
 }
 void Bonk::PauseState::draw()
 {
-	display->setTextFont(1);
+	display->setTextDatum(textdatum_t::top_center);
+	display->setFont(&fonts::Font0);
 	display->setTextSize(2);
 	display->setTextColor(TFT_WHITE);
 	display->clear(TFT_BLACK);
-	display->setCursor(0, display->height()/2 - 30);
-	display->setTextFont(2);
+	display->setFont(&fonts::Font2);
 	display->setTextSize(2);
-	display->printCenter("Paused");
-	display->setCursor(4, 110);
+	display->drawString("Paused", display->width()/2, display->height()/2 - 30 );
 	display->setTextSize(1);
-	display->printCenter("A: resume    B: quit");
+	display->drawString("A: resume      B: quit", display->width()/2, 100);
 }
 void Bonk::PauseState::update(uint _time, Bonk& game)
 {

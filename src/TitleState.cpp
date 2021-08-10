@@ -51,17 +51,16 @@ void Bonk::TitleState::draw()
 {
 	display->clear(TFT_BLACK);
 	// drawBitmap(30, 14, bonk_title, TFT_WHITE, 2);
-	display->drawMonochromeIcon(bonk_title, 14, 8, 51, 28, 2, TFT_DARKGREY);
-	display->drawMonochromeIcon(bonk_title, 12, 6, 51, 28, 2, TFT_WHITE);
+	display->drawBitmap(29, 8, bonk_title, 51, 28, TFT_DARKGREY, (uint8_t)2);
+	display->drawBitmap(27, 6, bonk_title, 51, 28, TFT_WHITE, (uint8_t)2);
 	display->setTextSize(1);
-	display->setTextFont(2);
-	display->setCursor(32, 77);
+	display->setFont(&fonts::Font2);
 	display->setTextColor(TFT_WHITE);
-	display->printCenter("START");
-	display->setCursor(46, 101);
-	display->printCenter("QUIT");
-	display->drawRect(14, 74 + titleCursor * 24, 100, 22, blinkState ? TFT_RED : TFT_BLACK);
-	display->drawRect(15, 75 + titleCursor * 24, 98, 20, blinkState ? TFT_RED : TFT_BLACK);
+	display->setTextDatum(textdatum_t::top_center);
+	display->drawString("START",display->width()/2, 75);
+	display->drawString("QUIT", display->width()/2, 99);
+	display->drawRect(30, 72 + titleCursor * 24, 100, 22, blinkState ? TFT_RED : TFT_BLACK);
+	display->drawRect(31, 73 + titleCursor * 24, 98, 20, blinkState ? TFT_RED : TFT_BLACK);
 }
 void Bonk::TitleState::update(uint _time, Bonk& game)
 {
