@@ -12,12 +12,13 @@ struct GameInfo {
 
 #include <Arduino.h>
 #include <Display/Display.h>
+#include <SPIFFS.h>
 #include "src/bitmaps/bonk_icon.hpp"
 #include "src/Bonk.h"
 
 const GameInfo BonkInfo {
 		"Bonk",
 		"Bonk! the ball back and forth.",
-		bonk_icon,
+		[]() -> fs::File { return SPIFFS.open("/bonk.raw"); },
 		[](Display& display) -> Context* { return new Bonk::Bonk(display); }
 };
