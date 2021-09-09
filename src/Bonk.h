@@ -8,19 +8,18 @@
 
 
 #include <Support/Context.h>
-#include "../Nibble.hpp"
 #include <UI/Image.h>
 #include <Display/Sprite.h>
 
-extern Context* runningContext;
-extern bool exitingGame;
+/*extern Context* runningContext;
+extern bool exitingGame;*/
 
 namespace Bonk {
 	class State;
 	
 	class Bonk : public Context, public LoopListener {
 	public:
-		Bonk(Display& Display);
+		Bonk(Display* Display);
 
 		void draw() override;
 		void start() override;

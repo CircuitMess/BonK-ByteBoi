@@ -5,7 +5,7 @@
 #include "PauseState.h"
 #include "State.hpp"
 
-Bonk::Bonk::Bonk(Display& display) : Context(display), display(&display), canvas(screen.getSprite()){
+Bonk::Bonk::Bonk(Display* display) : Context(*display), display(display), canvas(screen.getSprite()){
 	randomSeed(micros()*millis());
 	state = new TitleState(canvas);
 }
@@ -22,7 +22,7 @@ void Bonk::Bonk::loop(uint _time)
 }
 void Bonk::Bonk::start()
 {
-	runningContext = this;
+	//runningContext = this;
 	state->start(*this);
 	LoopManager::addListener(this);
 }
@@ -40,7 +40,7 @@ void Bonk::Bonk::pack()
 		delete pausedGameState;
 	}
 
-	exitingGame = true;
+	//exitingGame = true;
 }
 void Bonk::Bonk::newGame()
 {
