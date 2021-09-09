@@ -19,6 +19,6 @@ struct GameInfo {
 const GameInfo BonkInfo {
 		"Bonk",
 		"Bonk! the ball back and forth.",
-		[]() -> fs::File { return SPIFFS.open("/bonk.raw"); },
+		[]() -> fs::File { return SPIFFS.open("/MainMenu/bonk.raw"); },
 		[](Display& display) -> Context* { return new Bonk::Bonk(display); }
 };
