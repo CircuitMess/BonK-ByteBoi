@@ -2,7 +2,7 @@
 #define BONK_STATE_H
 
 #include <Display/Sprite.h>
-#include "../Nibble.hpp"
+#include <ByteBoi.h>
 
 namespace Bonk {
 	class Bonk;
