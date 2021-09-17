@@ -11,9 +11,6 @@
 #include <UI/Image.h>
 #include <Display/Sprite.h>
 
-/*extern Context* runningContext;
-extern bool exitingGame;*/
-
 namespace Bonk {
 	class State;
 	

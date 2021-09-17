@@ -22,7 +22,6 @@ void Bonk::Bonk::loop(uint _time)
 }
 void Bonk::Bonk::start()
 {
-	//runningContext = this;
 	state->start(*this);
 	LoopManager::addListener(this);
 }
@@ -40,7 +39,6 @@ void Bonk::Bonk::pack()
 		delete pausedGameState;
 	}
 
-	//exitingGame = true;
 }
 void Bonk::Bonk::newGame()
 {
