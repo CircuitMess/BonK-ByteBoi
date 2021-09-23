@@ -17,16 +17,14 @@ namespace Bonk {
 	class Bonk : public Context, public LoopListener {
 	public:
 		Bonk(Display* Display);
-
+		virtual ~Bonk();
 		void draw() override;
 		void start() override;
 		void loop(uint _time) override;
 		void stop() override;
-		void pack() override;
-		
+
 		void newGame();
 		void pauseGame();
-		void gameOver();
 		void resumeGame();
 		void quitGame();
 
