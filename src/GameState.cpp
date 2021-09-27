@@ -57,15 +57,17 @@ void Bonk::GameState::stop()
 }
 void Bonk::GameState::draw()
 {
+	display->setTextDatum(textdatum_t::middle_center);
+	display->setTextWrap(false, false);
 	display->setTextSize(5);
-	display->setFont(&fonts::Font0);
+	display->setTextFont(0);
 	display->setTextColor(TFT_WHITE);
 	display->clear(TFT_BLACK);
 	
 	if(winCondition)
 	{
 		display->clear(TFT_BLACK);
-		display->setFont(&fonts::Font2);
+		display->setTextFont(2);
 		display->setTextColor(TFT_WHITE);
 		display->setTextSize(2);
 		if(playerScore > 9){
@@ -84,7 +86,7 @@ void Bonk::GameState::draw()
 
 	//draw the score
 	display->setTextSize(3);
-	display->drawString(String(String(playerScore) + "     " + String(opponentScore)), display->width() / 2, 32);
+	display->drawString(String(String(playerScore) + "      " + String(opponentScore)), display->width() / 2, 32);
 	//draw the ball
 	display->fillRect(ballX, ballY, ballSize, ballSize, TFT_WHITE);
 	//draw the player

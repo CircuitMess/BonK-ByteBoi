@@ -10,6 +10,10 @@ Bonk::Bonk::Bonk(Display* display) : Context(*display), display(display), canvas
 	state = new TitleState(canvas);
 }
 
+Bonk::Bonk::~Bonk(){
+	delete state;
+}
+
 void Bonk::Bonk::draw()
 {
 	state->draw();
@@ -27,18 +31,8 @@ void Bonk::Bonk::start()
 }
 void Bonk::Bonk::stop()
 {
-	LoopManager::removeListener(this);
-}
-void Bonk::Bonk::pack()
-{
 	state->stop();
-	delete state;
-
-	if(pausedGameState != nullptr){
-		pausedGameState->stop();
-		delete pausedGameState;
-	}
-
+	LoopManager::removeListener(this);
 }
 void Bonk::Bonk::newGame()
 {
