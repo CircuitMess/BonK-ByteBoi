@@ -10,19 +10,16 @@
 #include <Audio/Piezo.h>
 
 Bonk::Bonk *game;
-
+uint32_t prevTime = 0;
 void setup() {
 	Serial.begin(115200);
 	ByteBoi.begin();
-	ByteBoi.getDisplay()->commit();
-	Piezo.begin(25);
 	game=new Bonk::Bonk(ByteBoi.getDisplay());
-	LoopManager::addListener(game);
 	game->unpack();
+	ByteBoi.splash();
 	game->start();
 }
 
 void loop() {
 	LoopManager::loop();
-	yield();
 }
