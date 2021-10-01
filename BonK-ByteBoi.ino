@@ -10,7 +10,6 @@
 #include <Audio/Piezo.h>
 
 Bonk::Bonk *game;
-uint32_t prevTime = 0;
 void setup() {
 	Serial.begin(115200);
 	ByteBoi.begin();
