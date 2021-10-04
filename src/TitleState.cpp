@@ -3,6 +3,7 @@
 #include "Bonk.h"
 #include "bitmaps/bonk_title.hpp"
 #include <Audio/Piezo.h>
+#include <ByteBoi.h>
 
 Bonk::TitleState* Bonk::TitleState::instance = nullptr;
 Bonk::TitleState::TitleState(Sprite* sprite) : State(sprite)
@@ -20,10 +21,10 @@ void Bonk::TitleState::start(Bonk& _game)
 		case 0:
 			instance->game->newGame();
 			break;
-		case 1:
-			instance->game->pop();
-			break;
-		
+			case 1:
+				ByteBoi.backToLauncher();
+				break;
+
 		default:
 			break;
 		}
