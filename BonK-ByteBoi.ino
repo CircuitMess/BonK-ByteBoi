@@ -13,6 +13,8 @@ Bonk::Bonk *game;
 void setup() {
 	Serial.begin(115200);
 	ByteBoi.begin();
+	ByteBoi.bindMenu();
+	ByteBoi.setGameID("Bonk");
 	game=new Bonk::Bonk(ByteBoi.getDisplay());
 	game->unpack();
 	ByteBoi.splash();
