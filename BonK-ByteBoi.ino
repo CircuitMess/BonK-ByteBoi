@@ -14,6 +14,7 @@ void setup() {
 	Serial.begin(115200);
 	ByteBoi.begin();
 	ByteBoi.bindMenu();
+	BatteryPopup.enablePopups(true);
 	ByteBoi.setGameID("Bonk");
 	game=new Bonk::Bonk(ByteBoi.getDisplay());
 	game->unpack();
