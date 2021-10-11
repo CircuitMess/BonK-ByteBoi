@@ -18,20 +18,20 @@ Bonk::GameState::GameState(Sprite* sprite) : State(sprite)
 	playerWidth = 6;
 	playerX = 5;
 	playerY = (sprite->height() - playerHeight) / 2;
-	playerSpeedY = 2.0;
+	playerSpeedY = 2.9;
 	//oponent variables
 	opponentScore = 0;
 	opponentHeight = 32;
 	opponentWidth = 6;
 	opponentX = sprite->width() - opponentWidth - 5;
 	opponentY = (sprite->height() - opponentHeight) / 2;
-	opponentSpeedY = 2.0;
+	opponentSpeedY = 1.0;
 	//ball variables
 	ballSize = 12;
 	ballX = sprite->width() - ballSize - opponentWidth - 1;
 	ballY = (sprite->height() - ballSize) / 2;
-	ballSpeedX = 4.0;
-	ballSpeedY = 4.0;
+	ballSpeedX = 6.0;
+	ballSpeedY = 6.0;
 
 	winCondition = 0;
 	deathTimer = 0;
@@ -108,11 +108,11 @@ void Bonk::GameState::update(uint _time, Bonk& game)
 
 	//move the oponent
 	if ((opponentY + (opponentHeight / 2)) < (ballY + (ballSize / 2))) { //if the ball is below the oponent
-		opponentY = opponentY + opponentSpeedY; //move down
+		opponentY += opponentSpeedY * (float)_time / 13200; //move down
 		opponentY = min(display->height() - opponentHeight, opponentY); //don't go out of the screen
 	}
 	else {
-		opponentY = opponentY - opponentSpeedY; //move up
+		opponentY -= opponentSpeedY * (float)_time / 13200; //move up
 		opponentY = max(0, opponentY); //don't go out of the screen
 	}
 
