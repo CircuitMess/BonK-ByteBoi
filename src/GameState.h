@@ -37,6 +37,7 @@ namespace Bonk {
 
 		bool winCondition;
 		uint deathTimer;
+		ByteBoiLED rgbLED;
 
 		static GameState* instance;
 	};
