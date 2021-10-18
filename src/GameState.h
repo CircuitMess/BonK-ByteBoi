@@ -1,6 +1,7 @@
 #ifndef BONK_GAMESTATE_H
 #define BONK_GAMESTATE_H
 
+#include <ByteBoiLED.h>
 #include "State.hpp"
 
 namespace Bonk {
@@ -37,7 +38,6 @@ namespace Bonk {
 
 		bool winCondition;
 		uint deathTimer;
-		ByteBoiLED rgbLED;
 
 		static GameState* instance;
 	};

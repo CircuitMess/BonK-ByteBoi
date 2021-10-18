@@ -140,16 +140,16 @@ void Bonk::GameState::update(uint _time, Bonk& game)
 		ballX = playerX + playerWidth;
 		ballSpeedX = -ballSpeedX;
 		Piezo.tone(100, 50);
-		rgbLED.setRGB(static_cast<LEDColor>(LEDColor::RED));
+		LED.setRGB(static_cast<LEDColor>(LEDColor::RED));
 	}
 	//collision with the oponent
 	if (rectRect(ballX, ballY, ballSize, ballSize, opponentX, opponentY, opponentWidth, opponentHeight)) {
 		ballX = opponentX - ballSize;
 		ballSpeedX = -ballSpeedX;
 		Piezo.tone(150, 50);
-		rgbLED.setRGB(static_cast<LEDColor>(LEDColor::BLUE));
+		LED.setRGB(static_cast<LEDColor>(LEDColor::BLUE));
 	}
-	rgbLED.setRGB(OFF);
+	LED.setRGB(OFF);
 	//collision with the left side
 	if (ballX < 0) {
 		opponentScore = opponentScore + 1;
