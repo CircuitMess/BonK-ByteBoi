@@ -133,27 +133,27 @@ void Bonk::GameState::update(uint _time, Bonk& game)
 	if (ballY < 0) {
 		ballY = 0;
 		ballSpeedY = -ballSpeedY;
-		Piezo.tone(50, 50);
+		//Playback.tone(300, 100);
 	}
 	//collision with the bottom border
 	if ((ballY + ballSize) > display->height()) {
 		ballY = display->height() - ballSize;
 		ballSpeedY = -ballSpeedY;
-		Piezo.tone(50, 50);
+		//Playback.tone(300, 100);
 
 	}
 	//collision with the player
 	if (rectRect(ballX, ballY, ballSize, ballSize, playerX, playerY, playerWidth, playerHeight)) {
 		ballX = playerX + playerWidth;
 		ballSpeedX = -ballSpeedX;
-		Piezo.tone(100, 50);
+		Playback.tone(600, 100);
 		LED.setRGB(static_cast<LEDColor>(LEDColor::RED));
 	}
 	//collision with the oponent
 	if (rectRect(ballX, ballY, ballSize, ballSize, opponentX, opponentY, opponentWidth, opponentHeight)) {
 		ballX = opponentX - ballSize;
 		ballSpeedX = -ballSpeedX;
-		Piezo.tone(150, 50);
+		Playback.tone(600, 100);
 		LED.setRGB(static_cast<LEDColor>(LEDColor::BLUE));
 	}
 	LED.setRGB(OFF);
@@ -164,7 +164,7 @@ void Bonk::GameState::update(uint _time, Bonk& game)
 		ballX = display->width() - ballSize - opponentWidth - 1;
 		ballSpeedX = -abs(ballSpeedX);
 		ballY = random(0, display->height() - ballSize);
-		Piezo.tone(350, 50);
+		Playback.tone(800, 100);
 	}
 	//collision with the right side
 	if ((ballX + ballSize) > display->width()) {
@@ -173,7 +173,7 @@ void Bonk::GameState::update(uint _time, Bonk& game)
 		ballX = display->width() - ballSize - opponentWidth - 16; //place the ball on the oponent side
 		ballSpeedX = -abs(ballSpeedX);
 		ballY = random(0, display->height() - ballSize);
-		Piezo.tone(350, 50);
+		Playback.tone(800, 100);
 	}
 }
 bool Bonk::GameState::rectRect(float x1, float y1, float w1, float h1, float x2, float y2, float w2, float h2) {
