@@ -2,11 +2,13 @@
 #define BONK_TITLESTATE_H
 
 #include "State.hpp"
+#include <ByteBoi.h>
 
 namespace Bonk {
 	class TitleState : public State {
 	public:
 		TitleState(Sprite* sprite);
+		virtual ~TitleState();
 		void update(uint _time, Bonk& game) override;
 		void draw() override;
 		void start(Bonk& game) override;

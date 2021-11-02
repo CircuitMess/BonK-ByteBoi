@@ -2,7 +2,8 @@
 #include <Input/Input.h>
 #include "Bonk.h"
 #include "bitmaps/bonk_title.hpp"
-#include <Audio/Piezo.h>
+#include <ByteBoi.h>
+#include <SD.h>
 
 #define min(a,b) ((a)<(b)?(a):(b))
 #define max(a,b) ((a)>(b)?(a):(b))
@@ -36,6 +37,9 @@ Bonk::GameState::GameState(Sprite* sprite) : State(sprite)
 	winCondition = 0;
 	deathTimer = 0;
 }
+Bonk::GameState::~GameState(){
+	GameState::stop();
+}
 void Bonk::GameState::start(Bonk& _game)
 {
 	game = &_game;
@@ -48,6 +52,9 @@ void Bonk::GameState::start(Bonk& _game)
 	Input::getInstance()->setBtnPressCallback(BTN_B, [](){
 		instance->game->pauseGame();
 	});
+
+	extern Sample* gameMusic;
+	Playback.play(gameMusic);
 }
 void Bonk::GameState::stop()
 {

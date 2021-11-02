@@ -2,12 +2,15 @@
 #define BONK_GAMESTATE_H
 
 #include <ByteBoiLED.h>
+#include <Playback/Sample.h>
 #include "State.hpp"
+#include <ByteBoi.h>
 
 namespace Bonk {
 	class GameState : public State {
 	public:
 		GameState(Sprite* sprite);
+		virtual ~GameState();
 		void update(uint _time, Bonk& game) override;
 		void draw() override;
 		void start(Bonk& game) override;

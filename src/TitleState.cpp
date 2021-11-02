@@ -4,6 +4,7 @@
 #include "bitmaps/bonk_title.hpp"
 #include <Audio/Piezo.h>
 #include <ByteBoi.h>
+#include <SD.h>
 
 Bonk::TitleState* Bonk::TitleState::instance = nullptr;
 Bonk::TitleState::TitleState(Sprite* sprite) : State(sprite)
@@ -11,6 +12,9 @@ Bonk::TitleState::TitleState(Sprite* sprite) : State(sprite)
 	instance = this;
 	titleCursor = 0;
 	blinkState = 0;
+}
+Bonk::TitleState::~TitleState(){
+	TitleState::stop();
 }
 void Bonk::TitleState::start(Bonk& _game)
 {
@@ -41,6 +45,9 @@ void Bonk::TitleState::start(Bonk& _game)
 			Piezo.tone(200, 50);
 		}
 	});
+
+	extern Sample* menuMusic;
+	Playback.play(menuMusic);
 }
 void Bonk::TitleState::stop()
 {

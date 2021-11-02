@@ -32,6 +32,7 @@ void Bonk::Bonk::start()
 void Bonk::Bonk::stop()
 {
 	state->stop();
+	Playback.stop();
 	LoopManager::removeListener(this);
 }
 void Bonk::Bonk::newGame()
