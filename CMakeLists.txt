@@ -42,9 +42,10 @@ include_directories(${Arduino15}/packages/cm/hardware/esp32/1.2.4/libraries/SPIF
 include_directories(${Arduino15}/packages/cm/hardware/esp32/1.2.4/libraries/CircuitOS/src)
 include_directories(${Arduino15}/packages/cm/hardware/esp32/1.2.4/libraries/JPEGDecoder/src)
 include_directories(${Arduino15}/packages/cm/hardware/esp32/1.2.4/libraries/OpenCV-ESP32/src)
+include_directories(${Arduino15}/packages/cm/hardware/esp32/1.2.4/libraries/LovyanGFX/src)
 
-include_directories(${ArduinoLibs}/LovyanGFX/src)
 include_directories(${ArduinoLibs}/ByteBoi-Library/src)
+include_directories(${ArduinoLibs}/CircuitMess-Audio/src)
 
 # Source directories
 file(GLOB_RECURSE SOURCES "src/**.cpp" "src/**.c" "src/**.hpp" "src/**.h")
@@ -54,7 +55,7 @@ file(GLOB_RECURSE SOURCES "src/**.cpp" "src/**.c" "src/**.hpp" "src/**.h")
 add_definitions(-DDEBUG)
 add_definitions(-DESP32)
 add_definitions(-DCIRCUITOS_FREERTOS)
-add_definitions(-DCIRCUITOS_I2S)
+add_definitions(-DCIRCUITOS_NVS)
 add_definitions(-DCIRCUITOS_LOVYANGFX)
 
 
