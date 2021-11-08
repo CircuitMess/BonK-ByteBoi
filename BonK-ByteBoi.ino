@@ -5,7 +5,7 @@
 #include <Input/InputI2C.h>
 #include <Loop/LoopManager.h>
 #include <ByteBoi.h>
-
+#include <SleepService.h>
 #include <SD.h>
 
 namespace Bonk {
@@ -17,6 +17,7 @@ Bonk::Bonk *game;
 void setup() {
 	Serial.begin(115200);
 	ByteBoi.begin();
+	Sleep.begin();
 	ByteBoi.bindMenu();
 	BatteryPopup.enablePopups(true);
 	ByteBoi.setGameID("Bonk");
