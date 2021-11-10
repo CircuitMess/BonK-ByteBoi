@@ -25,8 +25,9 @@ void Bonk::TitleState::start(Bonk& _game)
 			instance->game->newGame();
 			break;
 			case 1:
+				Playback.stop();
 				ByteBoi.backToLauncher();
-				break;
+				return;
 
 		default:
 			break;
