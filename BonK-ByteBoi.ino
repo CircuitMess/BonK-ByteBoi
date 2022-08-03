@@ -21,7 +21,6 @@ void setup() {
 	ByteBoi.bindMenu();
 	BatteryPopup.enablePopups(true);
 	ByteBoi.setGameID("Bonk");
-	SD.begin(SD_CS, SPI);
 
 	Bonk::menuMusic = new Sample(SD.open(ByteBoi.getSDPath() + "/Music/Menu.aac"));
 	Bonk::gameMusic = new Sample(SD.open(ByteBoi.getSDPath() + "/Music/Game.aac"));
